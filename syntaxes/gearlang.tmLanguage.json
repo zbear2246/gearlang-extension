@@ -1,0 +1,103 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "GearLang",
+    "scopeName": "source.gear",
+    "fileTypes": [
+        ".gear",
+        ".gearlang"
+    ],
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#delimiters"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "match": "//.*",
+            "name": "comment.line.double-slash.gear"
+        },
+        "keywords": {
+            "match": "\\b(if|else|return|fn|extern|let)\\b",
+            "name": "keyword.control.gear"
+        },
+        "strings": {
+            "begin": "\"",
+            "end": "\"",
+            "name": "string.quoted.double.gear"
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "match": "\\b\\d+\\.\\d+\\b",
+                    "name": "constant.numeric.float.gear"
+                },
+                {
+                    "match": "\\b\\d+\\b",
+                    "name": "constant.numeric.integer.gear"
+                }
+            ]
+        },
+        "types": {
+            "match": "\\b(i8|i16|i32|i64|f16|f32|f64)\\b",
+            "name": "storage.type.gear"
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "match": "=>",
+                    "name": "keyword.operator.arrow.gear"
+                },
+                {
+                    "match": "[+\\-*/<>=]",
+                    "name": "keyword.operator.gear"
+                },
+                {
+                    "match": "#",
+                    "name": "keyword.operator.adress-of.gear"
+                },
+                {
+                    "match": "@",
+                    "name": "keyword.operator.dereference.gear"
+                },
+                {
+                    "match": "&",
+                    "name": "keyword.operator.pointer.gear"
+                },
+                {
+                    "match": ":",
+                    "name": "punctuation.separator.gear"
+                }
+            ]
+        },
+        "delimiters": {
+            "patterns": [
+                {
+                    "match": "[(){}]",
+                    "name": "punctuation.bracket.gear"
+                },
+                {
+                    "match": "[;,]",
+                    "name": "punctuation.separator.gear"
+                }
+            ]
+        }
+    }
+}

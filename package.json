@@ -1,0 +1,32 @@
+{
+    "name": "gearlang",
+    "displayName": "GearLang",
+    "description": "Syntax highlights for the GearLang Language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "gearlang",
+                "aliases": [
+                    "GearLang",
+                    "gear"
+                ],
+                "extensions": [
+                    ".gear",
+                    ".gearlang"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "gearlang",
+                "scopeName": "source.gear",
+                "path": "./syntaxes/gearlang.tmLanguage.json"
+            }
+        ]
+    }
+}
