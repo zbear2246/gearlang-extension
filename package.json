@@ -3,6 +3,7 @@
     "displayName": "GearLang",
     "description": "Syntax highlights for the GearLang Language",
     "version": "0.0.1",
+    "main": "./extension.js",
     "engines": {
         "vscode": "^1.22.0"
     },
@@ -28,5 +29,12 @@
                 "path": "./syntaxes/gearlang.tmLanguage.json"
             }
         ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kwphil/gearlang"
+    },
+    "devDependencies": {
+        "@types/vscode": "1.109.0"
     }
 }
