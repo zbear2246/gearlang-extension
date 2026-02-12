@@ -1,0 +1,18 @@
+{
+    "name": "gearlang",
+    "version": "0.0.2",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "dependencies": {
+        "vscode-languageserver": "9.0.1",
+        "vscode-languageserver-textdocument": "1.0.12"
+    },
+    "devDependencies": {
+        "typescript": "5.9.3"
+    }
+}
