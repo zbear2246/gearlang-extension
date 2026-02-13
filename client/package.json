@@ -1,6 +1,7 @@
 {
     "name": "gearlang",
     "version": "0.0.2",
+    "main": "out/extension.js",
     "engines": {
         "vscode": "^1.22.0"
     },
@@ -9,10 +10,10 @@
         "watch": "tsc -watch -p ./"
     },
     "dependencies": {
-        "vscode-languageclient": "9.0.1",
-        "@types/vscode": "1.109.0"
+        "vscode-languageclient": "9.0.1"
     },
     "devDependencies": {
-        "typescript": "5.9.3"
+        "@types/vscode": "^1.109.0",
+        "typescript": "^5.9.3"
     }
 }

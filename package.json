@@ -3,7 +3,7 @@
     "displayName": "GearLang",
     "description": "Syntax highlights for the GearLang Language",
     "version": "0.0.2",
-    "main": "./extension.ts",
+    "main": "client/out/extension.js",
     "engines": {
         "vscode": "^1.22.0"
     },

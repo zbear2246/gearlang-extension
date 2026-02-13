@@ -1,6 +1,13 @@
 *.gear
 *.gearlang
+out
 
 node_modules
 client/node_modules
 server/node_mocules
+
+extension.js
+
+
+PROMPT.md
+COMPLETED.md
