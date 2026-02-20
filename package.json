@@ -9,6 +9,7 @@
         "vscode": "^1.22.0"
     },
     "scripts": {
+        "postinstall": "npm install --prefix client && npm install --prefix server",
         "compile": "npm run compile --prefix client && npm run compile --prefix server",
         "watch": "npm run watch --prefix client && npm run watch --prefix server"
     },
