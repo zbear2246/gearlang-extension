@@ -28,14 +28,32 @@ class SymbolTable {
 
     };
 
+    
+    /**
+     * getAll
+     */
+    public getAll(): GearSymbol[] {
+
+        let allSymbols: GearSymbol[] = [];
+        let allFunctions: FunctionSymbol[] = [];
+        let allVariables: VariableSymbol[] = [];
+
+        allFunctions = Array.from(this.functions.values());
+        allVariables = Array.from(this.variables.values());
+
+        allSymbols = [...allFunctions, ...allVariables]
+
+        return allSymbols;
+    }
+
     /**
      * lookup
      */
     public lookup(name: string): GearSymbol | undefined {
         if (this.functions.has(name)) {
-            return this.functions.get(name)
+            return this.functions.get(name);
         } else if (this.variables.has(name)) {
-            return this.variables.get(name)
+            return this.variables.get(name);
         } else {
             return undefined
         }

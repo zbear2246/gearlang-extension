@@ -50,22 +50,25 @@
     * [x] Lookup method
     * [x] Clear/reset method
 
-  * [ ] `server/src/analyzer/analyzer.ts`
-    * [ ] Analyzer function skeleton
-    * [ ] Walk token stream
-    * [ ] Detect function declarations
-    * [ ] Detect variable declarations
-    * [ ] Populate symbol table
+  * [x] `server/src/analyzer/analyzer.ts`
+    * [x] Analyzer function skeleton
+    * [x] Walk token stream
+    * [x] Detect function declarations
+    * [x] Detect variable declarations
+    * [x] Populate symbol table
 
-  * [ ] `server/src/server.ts`
-    * [ ] Imports
-    * [ ] Create connection
-    * [ ] Create document manager
-    * [ ] `onInitialize` handler
-    * [ ] `onDidOpenTextDocument` handler
-    * [ ] `onDidChangeTextDocument` handler
-    * [ ] Completion handler
-    * [ ] Start listening
+  * [x] `server/src/server.ts`
+    * [x] Imports
+    * [x] Create connection
+    * [x] Create document manager
+    * [x] `onInitialize` handler
+    * [x] `onDidOpenTextDocument` handler
+    * [x] `onDidChangeTextDocument` handler
+    * [x] Completion handler
+    * [x] Diagnostics handler
+      * [x] Report unknown identifiers
+      * [~] Report missing semicolons
+    * [x] Start listening
 
 * [ ] **Wiring & testing**
   * [ ] Compile both client and server (`tsc`)
@@ -73,6 +76,8 @@
   * [ ] Test autocomplete suggests declared variables
   * [ ] Test autocomplete suggests declared functions
   * [ ] Test suggestions update as you type
+  * [ ] Test error squiggles appear for unknown identifiers
+  * [ ] Test error squiggles appear for missing semicolons
 
 * [ ] **Neovim port** *(do this after VSCode is fully working)*
   * [ ] Understand how Neovim connects to an LSP server

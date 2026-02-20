@@ -41,6 +41,6 @@ export interface Token {
     value: string,
     row: number,
     col: number
-}
+};
 
 export type Symbol = FunctionSymbol | VariableSymbol;

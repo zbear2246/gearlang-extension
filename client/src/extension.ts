@@ -1,10 +1,51 @@
-'use strict';
 import path from 'node:path';
 import * as vscode from 'vscode';
-const editor = vscode.window.activeTextEditor;
+import { LanguageClientOptions, LanguageClient, ServerOptions, TransportKind } from 'vscode-languageclient/node';
 
-function activate() {
-    const server_path = path.join(__dirname, "..", "..", "server", "out", "server.js");
-    
-    
+
+
+const server_path = path.join(__dirname, "..", "..", "server", "out", "server.js");
+
+
+
+function activate(context: vscode.ExtensionContext) {
+
+    const serverOptions: ServerOptions = {
+        run: {
+            module: server_path,
+            transport: TransportKind.ipc
+        },
+        debug: {
+            module: server_path,
+            transport: TransportKind.ipc
+        }
+    }
+
+    const clientOptions: LanguageClientOptions = {
+        documentSelector: [
+            {
+                scheme: 'file',
+                language: "gearlang"
+            }
+        ]
+    }
+
+    const client = new LanguageClient(
+        "gearlang",
+        "GearLang",
+        serverOptions,
+        clientOptions
+    )
+
+    client.start();
+
+    context.subscriptions.push(client)
+
+
+
 }   
+
+
+function deactivate() {};
+
+export { activate, deactivate}

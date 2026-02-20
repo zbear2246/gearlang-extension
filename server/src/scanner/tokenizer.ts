@@ -203,7 +203,7 @@ export function tokenize(source: string): Token[] {
                         advance();
                         advance();
                     } else {
-                        tokens.push(token_creation(TokenType.Error, "char", row, col))
+                        tokens.push(token_creation(TokenType.Error, char, row, col))
                     }
                     break;
 
