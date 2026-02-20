@@ -4,7 +4,7 @@
     "description": "Syntax highlights for the GearLang Language",
     "version": "0.0.2",
     "main": "client/out/extension.js",
-    "type": "module",
+    "publisher": "zbear2246",
     "engines": {
         "vscode": "^1.22.0"
     },
@@ -43,10 +43,7 @@
         "url": "https://github.com/kwphil/gearlang"
     },
     "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@typescript-eslint/eslint-plugin": "^8.55.0",
-        "@typescript-eslint/parser": "^8.55.0",
-        "eslint": "^9.39.2",
-        "typescript": "^5.9.3"
+        "@types/vscode": "1.109.0",
+        "typescript": "5.9.3"
     }
 }

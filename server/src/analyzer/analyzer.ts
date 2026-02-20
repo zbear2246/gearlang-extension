@@ -44,13 +44,13 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
         advance();
 
 
-        if (i < tokens.length) {
+        if (i >= tokens.length) {
             return;
         }
 
 
 
-        const new_token = current();
+        const new_token: Token = current();
 
         const peeked = peek();
 

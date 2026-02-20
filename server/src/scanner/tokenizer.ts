@@ -96,7 +96,7 @@ export function tokenize(source: string): Token[] {
             let value = `${source[i]}`;
             advance();
 
-            while (numbers.test(source[i]) || letters_.test(source[i])) {
+            while (i < source.length && (numbers.test(source[i]) || letters_.test(source[i]))) {
                 value += source[i]
                 advance()
             }
