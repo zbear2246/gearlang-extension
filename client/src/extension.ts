@@ -42,7 +42,7 @@ function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(client)
 
 
-
+    return client;
 }   
 
 

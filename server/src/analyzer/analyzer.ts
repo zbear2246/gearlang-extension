@@ -44,7 +44,7 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
         advance();
 
 
-        if (i >= tokens.length) {
+        if (i < tokens.length) {
             return;
         }
 
@@ -54,8 +54,6 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
 
         const peeked = peek();
 
-        let typeToken: Token;
-
         let variableSymbol: VariableSymbol;
 
         if (peeked === undefined) {
@@ -64,7 +62,7 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
                 name: new_token.value
             };
         } else if (peeked.value === ":" && i+2 < tokens.length) {
-            typeToken = tokens[i+2]
+            let typeToken: Token = tokens[i+2]
             variableSymbol = {
                 kind: "variable",
                 name: new_token.value,

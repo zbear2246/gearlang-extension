@@ -23,9 +23,9 @@ connection.onInitialize((_params: lsp.InitializeParams): lsp.InitializeResult =>
 });
 
 connection.onCompletion((_params: lsp.TextDocumentPositionParams): lsp.CompletionItem[] => {
-    const allSybols: GearSymbol[] = symbolTable.getAll();
+    const allSymbols: GearSymbol[] = symbolTable.getAll();
 
-    return allSybols.map(symbol => {
+    return allSymbols.map(symbol => {
         return {
             label: symbol.name,
             kind: symbol.kind === "function" ? lsp.CompletionItemKind.Function : lsp.CompletionItemKind.Variable
@@ -68,28 +68,6 @@ function analyzeDocument(text: string, uri: string): void {
 
         create_Diagnostic(token);
     }
-
-    let i = 0;
-
-
-    for (let i = 0; i < tokens.length; i++) {
-        const startToken = tokens[i]
-
-        if (i + 1 >= tokens.length) {
-            break;
-        };
-
-        if (startToken.type !== TokenType.Keyword) {
-            continue;
-        };
-
-        let currentToken = tokens[i + 1];
-        
-
-
-    };
-
-
 
     connection.sendDiagnostics({
         uri: uri,
