@@ -2,11 +2,11 @@
     "name": "gearlang",
     "displayName": "GearLang",
     "description": "Syntax highlights for the GearLang Language",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "main": "client/out/extension.js",
     "publisher": "zbear2246",
     "engines": {
-        "vscode": "^1.22.0"
+        "vscode": "^1.109.0"
     },
     "scripts": {
         "postinstall": "npm install --prefix client && npm install --prefix server",
