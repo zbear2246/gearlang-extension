@@ -1,0 +1,14 @@
+{
+    "name": "gearlang-server",
+    "version": "0.1.0",
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "vscode-languageserver": "9.0.1",
+        "vscode-languageserver-textdocument": "1.0.12",
+        "@types/vscode": "1.109.0",
+        "typescript": "^5.9.3"
+    }
+}

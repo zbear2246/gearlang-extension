@@ -1,0 +1,14 @@
+*.gear
+*.gearlang
+out
+
+node_modules
+client/node_modules
+server/node_mocules
+.vscode/
+
+extension.js
+
+
+PROMPT.md
+COMPLETED.md
