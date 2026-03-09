@@ -31,6 +31,10 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
 
         const name = next_token.value;
 
+        
+        
+
+
         const functionSymbol: FunctionSymbol = {
             kind: "function",
             name: name
@@ -61,8 +65,8 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
                 kind: "variable",
                 name: new_token.value
             };
-        } else if (peeked.value === ":" && i+2 < tokens.length) {
-            let typeToken: Token = tokens[i+2]
+        } else if (peeked.value === ":" && i + 2 < tokens.length) {
+            let typeToken: Token = tokens[i + 2]
             variableSymbol = {
                 kind: "variable",
                 name: new_token.value,

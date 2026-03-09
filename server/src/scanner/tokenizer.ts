@@ -97,15 +97,15 @@ export function tokenize(source: string): Token[] {
             advance();
 
             while (i < source.length && (numbers.test(source[i]) || letters_.test(source[i]))) {
-                value += source[i]
-                advance()
-            }
+                value += source[i];
+                advance();
+            };
 
             if (KEYWORDS.has(value)) {
-                tokens.push(token_creation(TokenType.Keyword, value, row, startCol))
+                tokens.push(token_creation(TokenType.Keyword, value, row, startCol));
             } else {
-                tokens.push(token_creation(TokenType.Identifier, value, row, startCol))
-            }
+                tokens.push(token_creation(TokenType.Identifier, value, row, startCol));
+            };
 
         } else {
             const startCol = col;
@@ -211,8 +211,8 @@ export function tokenize(source: string): Token[] {
                     tokens.push(token_creation(TokenType.Error, char, row, startCol))
                     advance();
             }
-        }
-    }
+        };
+    };
 
     return tokens
 };
@@ -227,4 +227,4 @@ function token_creation(type: TokenType, value: string, row: number, col: number
     }
 
     return token
-}
+};
