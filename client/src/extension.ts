@@ -2,13 +2,9 @@ import path from 'node:path';
 import * as vscode from 'vscode';
 import { LanguageClientOptions, LanguageClient, ServerOptions, TransportKind } from 'vscode-languageclient/node';
 
-
-
 const server_path = path.join(__dirname, "..", "..", "server", "out", "server.js");
 
-
-
-function activate(context: vscode.ExtensionContext) {
+function activate(context: vscode.ExtensionContext): any {
 
     const serverOptions: ServerOptions = {
         run: {
@@ -37,15 +33,19 @@ function activate(context: vscode.ExtensionContext) {
         clientOptions
     )
 
+
+
     client.start();
 
     context.subscriptions.push(client)
 
 
-    return client;
-}   
+    return {
+        extendMarkdownIt(md: any){
+            return md;
+        }
+    };
+}
 
-
-function deactivate() {};
-
-export { activate, deactivate}
+function deactivate() { };
+export { activate, deactivate }

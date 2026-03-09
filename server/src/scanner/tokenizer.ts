@@ -1,5 +1,7 @@
 import { TokenType, Token } from "../types";
 
+const numbers = /[0-9]/;
+const letters_ = /[a-zA-Z_]/;
 
 const KEYWORDS = new Set([
     "fn",
@@ -13,9 +15,16 @@ const KEYWORDS = new Set([
     "return"
 ]);
 
-const numbers = /[0-9]/;
-const letters_ = /[a-zA-Z_]/
-
+const PRIMTYPES = new Set([
+    "void",
+    "char",
+    "i8",
+    "i16",
+    "i32",
+    "i64",
+    "f32",
+    "f64"
+]);
 
 export function tokenize(source: string): Token[] {
     const tokens: Token[] = [];
@@ -25,9 +34,9 @@ export function tokenize(source: string): Token[] {
     let col = 1;
 
     function advance() {
-        i++
-        col++
-    }
+        i++;
+        col++;
+    };
 
     while (i < source.length) {
         const char = source[i];
@@ -103,8 +112,10 @@ export function tokenize(source: string): Token[] {
 
             if (KEYWORDS.has(value)) {
                 tokens.push(token_creation(TokenType.Keyword, value, row, startCol))
+            } else if (PRIMTYPES.has(value)) {
+                tokens.push(token_creation(TokenType.PrimitiveType, value, row, startCol))
             } else {
-                tokens.push(token_creation(TokenType.Identifier, value, row, startCol))
+                tokens.push(token_creation(TokenType.Identifier, value, row, col))
             }
 
         } else {
@@ -125,8 +136,8 @@ export function tokenize(source: string): Token[] {
                     advance();
                     break;
 
-                case "&":
-                    tokens.push(token_creation(TokenType.Amper, char, row, startCol));
+                case "^":
+                    tokens.push(token_creation(TokenType.Karet, char, row, startCol));
                     advance();
                     break;
 
@@ -187,7 +198,7 @@ export function tokenize(source: string): Token[] {
                     break;
 
                 case ":":
-                    tokens.push(token_creation(TokenType.Operator, char, row, startCol));
+                    tokens.push(token_creation(TokenType.colon, char, row, startCol));
                     advance();
                     break;
 
@@ -212,9 +223,9 @@ export function tokenize(source: string): Token[] {
                     advance();
             }
         }
-    }
+    };
 
-    return tokens
+    return tokens;
 };
 
 
@@ -227,4 +238,4 @@ function token_creation(type: TokenType, value: string, row: number, col: number
     }
 
     return token
-}
+};

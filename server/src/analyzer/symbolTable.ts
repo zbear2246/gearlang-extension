@@ -1,4 +1,4 @@
-import { FunctionSymbol, Symbol as GearSymbol, VariableSymbol } from "../types";
+import { Symbol as GearSymbol,  FunctionSymbol, VariableSymbol} from "../types";
 
 
 class SymbolTable {

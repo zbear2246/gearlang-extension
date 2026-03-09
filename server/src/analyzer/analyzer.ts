@@ -1,4 +1,5 @@
-import { Token, TokenType, FunctionSymbol, VariableSymbol } from "../types";
+import { combineConsoleFeatures } from "vscode-languageserver";
+import { Token, TokenType, FunctionSymbol, VariableSymbol, FunctionParam } from "../types";
 import { SymbolTable } from "./symbolTable";
 
 
@@ -19,39 +20,78 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
     function peek(): Token | undefined {
         return tokens[i + 1];
     };
+    
+    function parseParams(peeked: Token | undefined): FunctionParam[] | undefined {
+        if (peeked === undefined){
+            return;
+        };
+
+
+        if (peeked.type === TokenType.colon) {
+            while (i < tokens.length
+                && tokens[i].type !== TokenType.BraceOpen
+                && tokens[i].type !== TokenType.Semi
+                && tokens[i].value !== "=>"
+            ) {
+                
+            }
+        }
+
+        return;
+    }
 
     function parseFn(): void {
-        advance()
+        advance();
 
         if (i >= tokens.length) {
-            return
-        }
+            return;
+        };
 
-        const next_token = current()
+        const start = current()
 
-        const name = next_token.value;
+        let type: string;
+        let name: string;
+        let params: FunctionParam[] | undefined;
 
-        const functionSymbol: FunctionSymbol = {
-            kind: "function",
-            name: name
-        }
+        let peeked: Token | undefined;
 
-        symbolTable.addFunction(functionSymbol)
+
+        if (start.type === TokenType.PrimitiveType) {
+            advance();
+
+            if (i >= tokens.length) {
+                return;
+            };
+
+            type = start.value;
+            name = current().value;
+
+
+            if (i + 1 < tokens.length) {
+                peeked = peek();
+            }
+
+
+
+            advance();
+        } else {
+            type = "void"
+            name = current().value;
+            advance();
+        };
+
+
 
     };
 
     function parseLet(): void {
         advance();
 
-
         if (i >= tokens.length) {
             return;
         }
 
-
-
         const new_token: Token = current();
-
         const peeked = peek();
 
         let variableSymbol: VariableSymbol;
@@ -61,8 +101,8 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
                 kind: "variable",
                 name: new_token.value
             };
-        } else if (peeked.value === ":" && i+2 < tokens.length) {
-            let typeToken: Token = tokens[i+2]
+        } else if (peeked.value === ":" && i + 2 < tokens.length) {
+            let typeToken: Token = tokens[i + 2]
             variableSymbol = {
                 kind: "variable",
                 name: new_token.value,
@@ -76,13 +116,7 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
         }
 
         symbolTable.addVariable(variableSymbol)
-    }
-
-
-
-
-
-    //main loop
+    };
 
     while (i < tokens.length) {
         const token = current()
@@ -100,7 +134,5 @@ export function analyze(tokens: Token[], symbolTable: SymbolTable): void {
         }
 
         advance();
-
-
     }
 }

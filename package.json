@@ -2,7 +2,7 @@
     "name": "gearlang",
     "displayName": "GearLang",
     "description": "Syntax highlights for the GearLang Language",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "main": "client/out/extension.js",
     "publisher": "zbear2246",
     "engines": {
@@ -18,6 +18,7 @@
         "onLanguage:gearlang"
     ],
     "contributes": {
+        "markdown.markdownItPlugins": true,
         "languages": [
             {
                 "id": "gearlang",
@@ -36,7 +37,14 @@
             {
                 "language": "gearlang",
                 "scopeName": "source.gear",
-                "path": "./syntaxes/gearlang.tmLanguage.json"
+                "path": "./syntaxes/gearlang.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.embedded.block.gearlang": "gearlang",
+                    "meta.embedded.block.gear": "gearlang"
+                },
+                "injectTo": [
+                    "text.html.markdown"
+                ]
             }
         ]
     },

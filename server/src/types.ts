@@ -6,6 +6,7 @@ export interface FunctionParam {
 export interface FunctionSymbol {
     kind: "function",
     name: string,
+    type: string | "void",
     params?: FunctionParam[]
 };
 
@@ -17,6 +18,7 @@ export interface VariableSymbol {
 
 export enum TokenType {
     Keyword,
+    PrimitiveType,
     Identifier,
     IntegerLiteral,
     FloatLiteral,
@@ -24,23 +26,25 @@ export enum TokenType {
     Operator,
     ParenOpen, //(
     ParenClose, //)
-    BraceOpen,
-    BraceClose,
+    BraceOpen, //{
+    BraceClose, //}
+    BracketOpen, // [
+    BracketClose, //]
     Ellipsis,
     Comma,
     Semi,
-    Amper, //&
+    Karet, //^
     Hash, //#
     At,
+    colon, //:
     Error
 };
-
 
 export interface Token {
     type: TokenType,
     value: string,
     row: number,
     col: number
-};
+}
 
 export type Symbol = FunctionSymbol | VariableSymbol;

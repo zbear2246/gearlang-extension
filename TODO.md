@@ -16,19 +16,19 @@
   * [x] Fix root `package.json` — change `"main"` from `"./extension.ts"` to point to compiled client output
   * [x] Fix `client/package.json` — change `"main"` from `"src/extension.ts"` to `"out/extension.js"`
 
-* [ ] **Client**
-  * [ ] `client/src/extension.ts`
-    * [ ] Imports
-    * [ ] `activate` function skeleton
-    * [ ] Define `serverModule` path
-    * [ ] Define `serverOptions`
-    * [ ] Define `clientOptions`
-    * [ ] Create language client instance
-    * [ ] Start the client
-    * [ ] Push disposable to context
-    * [ ] `deactivate` function
+* [x] **Client**
+  * [x] `client/src/extension.ts`
+    * [x] Imports
+    * [x] `activate` function skeleton
+    * [x] Define `serverModule` path
+    * [x] Define `serverOptions`
+    * [x] Define `clientOptions`
+    * [x] Create language client instance
+    * [x] Start the client
+    * [x] Push disposable to context
+    * [x] `deactivate` function
 
-* [~] **Server**
+* [x] **Server**
   * [x] `server/src/types.ts`
     * [x] Define function symbol type
     * [x] Define variable symbol type
@@ -42,6 +42,12 @@
     * [x] Handle identifiers
     * [x] Handle operators
     * [x] Handle whitespace/newlines
+    * [x] Handle string literals
+    * [x] Handle number literals (integers and floats)
+    * [x] Handle comments
+    * [x] Handle single-character symbols
+    * [x] Handle multi-character operators (=>, ...)
+    * [x] Handle error tokens
 
   * [x] `server/src/analyzer/symbolTable.ts`
     * [x] Symbol table class skeleton
@@ -70,13 +76,13 @@
       * [~] Report missing semicolons
     * [x] Start listening
 
-* [ ] **Wiring & testing**
-  * [ ] Compile both client and server (`tsc`)
-  * [ ] Test extension activates when opening a `.gear` file
-  * [ ] Test autocomplete suggests declared variables
-  * [ ] Test autocomplete suggests declared functions
-  * [ ] Test suggestions update as you type
-  * [ ] Test error squiggles appear for unknown identifiers
+* [~] **Wiring & testing**
+  * [x] Compile both client and server (`tsc`)
+  * [x] Test extension activates when opening a `.gear` file
+  * [x] Test autocomplete suggests declared variables
+  * [x] Test autocomplete suggests declared functions
+  * [x] Test suggestions update as you type
+  * [x] Test error squiggles appear for unknown identifiers
   * [ ] Test error squiggles appear for missing semicolons
 
 * [ ] **Neovim port** *(do this after VSCode is fully working)*

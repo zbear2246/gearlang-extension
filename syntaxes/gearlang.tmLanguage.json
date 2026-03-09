@@ -78,7 +78,7 @@
                     "name": "keyword.operator.dereference.gear"
                 },
                 {
-                    "match": "&",
+                    "match": "^",
                     "name": "keyword.operator.pointer.gear"
                 },
                 {

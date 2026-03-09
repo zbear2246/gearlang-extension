@@ -10,8 +10,6 @@ const documents = new lsp.TextDocuments(TextDocument);
 const symbolTable = new SymbolTable();
 
 connection.onInitialize((_params: lsp.InitializeParams): lsp.InitializeResult => {
-
-
     return {
         capabilities: {
             textDocumentSync: lsp.TextDocumentSyncKind.Incremental,
@@ -34,9 +32,9 @@ connection.onCompletion((_params: lsp.TextDocumentPositionParams): lsp.Completio
 
 
 });
+
 documents.onDidOpen((event) => {
     const text: string = event.document.getText();
-
     const uri: string = event.document.uri;
 
     analyzeDocument(text, uri);
@@ -61,19 +59,6 @@ function analyzeDocument(text: string, uri: string): void {
 
     const tokenErrors = tokens.filter(token => (token.type === TokenType.Error));
     const diagnostics: lsp.Diagnostic[] = [];
-    const validKeyWords = /\b(let|return|extern)\b/;
-
-    for (let i = 0; i < tokenErrors.length; i++) {
-        const token = tokenErrors[i]
-
-        create_Diagnostic(token);
-    }
-
-    connection.sendDiagnostics({
-        uri: uri,
-        diagnostics: diagnostics
-    })
-
 
     function create_Diagnostic(token: Token) {
         diagnostics.push(
@@ -87,6 +72,22 @@ function analyzeDocument(text: string, uri: string): void {
             }
         )
     }
+
+
+
+    for (let i = 0; i < tokenErrors.length; i++) {
+        const token = tokenErrors[i]
+
+        create_Diagnostic(token);
+    }
+
+
+    connection.sendDiagnostics({
+        uri: uri,
+        diagnostics: diagnostics
+    })
+
+
 
 }
 
